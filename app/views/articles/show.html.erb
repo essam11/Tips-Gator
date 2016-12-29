@@ -1,0 +1,16 @@
+
+<h2 align="center"><%= @article.title%></h2>
+<div class="well col-xs-8  col-xs-offset-2">
+  <h4 class="center description" ><strong>Content</strong></h4>
+    <%=simple_format (@article.description)%>
+  ID : <%= @article.id %>
+<p>Date of Create:<%= @article.created_at%></p>
+<p>Date of Update:<%= @article.updated_at%></p>
+
+<div class="article-actions">
+<%=link_to 'ُEdit', edit_article_path(@article),class: "btn btn-xs btn-primary"%>
+  <%=link_to 'ُDelete', article_path(@article),method: :delete ,data:{confirm:"Are You Sure You Want to Delete Your Tip?"},
+     class: "btn btn-xs btn-danger"%>
+<%=link_to 'View all Tips',articles_path,class: "btn btn-xs btn-success"%>
+</div>
+</div>
