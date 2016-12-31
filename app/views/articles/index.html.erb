@@ -8,6 +8,13 @@
           </div>
           <div class="article-body">
             <%= truncate(article.description,length:100)%>
+            <div class ="article-meta-details">
+              <small>
+            Created By:<%=@article.user.username if article.user%>,
+              Created at:<%= time_ago_in_words(@article.created_at )if article.user%> ago,
+              Last Update:<%=time_ago_in_words(@article.updated_at)if article.user%> ago
+            </small>
+            </div>
           </div>
           <div class="article-actions">
             <%=link_to 'ُEdit', edit_article_path(article),class: "btn btn-xs btn-primary"%>
