@@ -17,7 +17,8 @@ AlphaBlog::Application.routes.draw do
      resources :articles
     root 'articles#home'
     get 'articles/about',to:'articles#about'
-
+    get 'signup' ,to: 'users#new'
+    resources :users,except:[:new]
 
 
   # Example resource route with options:
