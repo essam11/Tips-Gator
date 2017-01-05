@@ -10,7 +10,7 @@ $navbar-default-bg: #1D182E;
   text-transform: capitalize;
   letter-spacing: -1px;
   font-weight: bold;
-  font-shadow: abs(20);
+
 }
 #logo:hover{
   color: #666666;
@@ -25,7 +25,7 @@ $navbar-default-bg: #1D182E;
 .center{
   text-align: center;
   color: black;
-  font-shadow: abs(50);
+
 
 }
 .jumbotron{
@@ -60,7 +60,10 @@ $navbar-default-bg: #1D182E;
   padding-bottom: 15px;
 
 }
-
+ .listing{
+   list-style: none;
+   padding-left: 0;
+ }
 
 .description{
   margin-top: 0;
