@@ -19,7 +19,11 @@ AlphaBlog::Application.routes.draw do
     get 'articles/about',to:'articles#about'
     get 'signup' ,to: 'users#new'
     resources :users,except:[:new]
+     get 'new' ,to: 'sessions#new'
 
+
+  #post 'login', to: 'sessions#create'
+  #delete 'logout', to: 'sessions#destroy'
 
   # Example resource route with options:
   #   resources :products do
