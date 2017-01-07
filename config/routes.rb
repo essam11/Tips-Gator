@@ -19,7 +19,9 @@ AlphaBlog::Application.routes.draw do
     get 'articles/about',to:'articles#about'
     get 'signup' ,to: 'users#new'
     resources :users,except:[:new]
-     get 'new' ,to: 'sessions#new'
+     get 'login' ,to: 'sessions#new'
+     post 'login' ,to: 'sessions#create'
+  delete 'logout' ,to: 'sessions#destroy'
 
 
   #post 'login', to: 'sessions#create'
