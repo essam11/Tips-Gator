@@ -47,6 +47,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
     if @article.save
        flash[:success]="Your Tip has been Created"
       redirect_to article_path(@article)
