@@ -10,9 +10,11 @@
             <%= truncate(article.description,length:100)%>
             <div class ="article-meta-details">
               <small>
+                <div class="features">
                 Created By:<%=article.user.username if article.user%>,
                 Created before: <%= time_ago_in_words(article.created_at )if article.user%> ago,
                 Last Update:<%=time_ago_in_words(article.updated_at)if article.user%> ago
+                </div>
               </small>
             </div>
           </div>
