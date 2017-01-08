@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
    before_action :set_article,only: [:edit ,:update ,:destroy,:show]
+   before_action :require_user,except: [:index,:show]
+   before_action :require_same_user,only:[:edit,:update,:destroy]
 
    def home
-
+   redirect_to articles_path if logged_in?
    end
 
   def index
@@ -61,5 +63,12 @@ class ArticlesController < ApplicationController
 
   def article_params
   params.require(:article).permit(:title,:description)
-    end
+  end
+
+  def require_same_user
+ if current_user !=  @article.user
+   flash[:danger]="You can only Edit your own Tips"
+   redirect_to articles_path
+ end
+  end
 end
