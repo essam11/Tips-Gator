@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
    before_action :require_same_user,only:[:edit,:update,:destroy]
 
    def home
-   redirect_to articles_path if logged_in?
+   redirect_to articles_path
    end
 
   def index
