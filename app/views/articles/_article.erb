@@ -11,14 +11,14 @@
             <div class ="article-meta-details">
               <small>
                 <div class="features">
-                Created By:<%=article.user.username if article.user%>,
-                Created before: <%= time_ago_in_words(article.created_at )if article.user%> ago,
-                Last Update:<%=time_ago_in_words(article.updated_at)if article.user%> ago
+                  <b>Created By</b>:<%=article.user.username if article.user%>,
+                  <b>before</b>: <%= time_ago_in_words(article.created_at )if article.user%> ago,
+                <b>Last Update</b>:<%=time_ago_in_words(article.updated_at)if article.user%> ago
                 </div>
               </small>
             </div>
           </div>
-          <%if logged_in? && current_user == article.user%>
+          <%if logged_in? && (current_user == article.user || current_user.admin?)%>
           <div class="article-actions">
             <%=link_to 'ُEdit', edit_article_path(article),class: "btn btn-xs btn-primary"%>
             <%=link_to 'ُDelete', article_path(article),method: :delete ,data:{confirm:"Are You Sure You Want to Delete Your Tip?"},

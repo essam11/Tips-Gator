@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :set_user ,only: [:edit,:update,:show]
   before_action :require_same_user,only:[:edit,:update,:destroy]
+  before_action :require_admin ,only:[:destroy]
   def index
     @users=User.all.order("created_at DESC").paginate(page:params[:page], per_page: 4 )
   end
@@ -38,6 +39,14 @@ end
 def show
 
 end
+
+  def destroy
+  @user=User.find(params[:id])
+    @user.destroy
+    flash[:danger]="User and all Articles Have been Deleted"
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:username ,:email ,:password)
@@ -46,10 +55,17 @@ end
     @user = User.find(params[:id])
   end
   def require_same_user
-    if   current_user != @user
+    if   current_user != @user and !current_user.admin?
       flash[:danger]= "You can only Edit your own Account"
       redirect_to articles_path
     end
-end
+  end
+
+  def require_admin
+    if logged_in?  and !current_user.admin?
+      flash[:danger]= "Only Admin User Can Perform This Action"
+      redirect_to articles_path
+    end
+  end
 
   end
