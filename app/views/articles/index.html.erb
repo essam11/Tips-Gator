@@ -1,5 +1,19 @@
-<h1 align="center">Listing all Tips</h1>
+<h2 align="center">Most Search</h2>
+<div class="row">
+  <div class="col-xs-4 col-md-2">
+    <div class="thumbnail">
+      <%=link_to image_tag("windows.png"),category_url(:windows)%>
+    </div>
+  </div>
+  <div class="col-xs-4 col-md-2">
+    <div class="thumbnail">
+      <%=link_to image_tag("linux.png"),category_url(:linux)%>
+    </div>
+</div>
+</div>
+<h2 align="center">Recently Added</h2>
 <div align="center">
+
 
 <%= will_paginate @articles, :page_link=>false  %>
 </div>
